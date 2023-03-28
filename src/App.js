@@ -1,6 +1,23 @@
 import React from "react";
 import "./App.css";
 
+function Card(props) {
+  return (
+    <div className="main_card">
+      <div className="main_card-header">{props.title}</div>
+      <div className="main_card-dollor">
+        <span className="main_card-dollor-mo">
+          <span>${props.money} </span>/ mo
+        </span>
+        <span>
+          {props.user} users included {props.memory} GB of storage Email support
+          Help center access
+        </span>
+        <button className="btn main_btn">{props.btn_txt}</button>
+      </div>
+    </div>
+  );
+}
 function App() {
   return (
     <body>
@@ -25,47 +42,29 @@ function App() {
         </span>
 
         <div className="card_warp">
-          <div className="main_card">
-            <div className="main_card-header">Free</div>
-            <div className="main_card-dollor">
-              <span className="main_card-dollor-mo">
-                <span>$0 </span>/ mo
-              </span>
-              <span>
-                10 users included 2 GB of storage Email support Help center
-                access
-              </span>
-              <button className="btn main_btn">Sign up for free</button>
-            </div>
-          </div>
+          <Card
+            title="Free"
+            money="0"
+            user="10"
+            memory="2"
+            btn_txt="Sign up for free"
+          ></Card>
 
-          <div className="main_card">
-            <div className="main_card-header">Pro</div>
-            <div className="main_card-dollor">
-              <span className="main_card-dollor-mo">
-                <span>$15 </span>/ mo
-              </span>
-              <span>
-                20 users included 10 GB of storage Priority email support Help
-                center access
-              </span>
-              <button className="btn main_btn">Get started</button>
-            </div>
-          </div>
+          <Card
+            title="Pro"
+            money="15"
+            user="20"
+            memory="10"
+            btn_txt="Get started"
+          ></Card>
 
-          <div className="main_card">
-            <div className="main_card-header">Enterprise</div>
-            <div className="main_card-dollor">
-              <span className="main_card-dollor-mo">
-                <span>$29 </span>/ mo
-              </span>
-              <span>
-                30 users included 15 GB of storage Phone and email support Help
-                center access
-              </span>
-              <button className="btn main_btn ">Contact us</button>
-            </div>
-          </div>
+          <Card
+            title="Enterprise"
+            money="29"
+            user="30"
+            memory="15"
+            btn_txt="Contact us"
+          ></Card>
         </div>
       </main>
       <footer>
