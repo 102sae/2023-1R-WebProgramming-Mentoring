@@ -1,24 +1,24 @@
 body {
-  padding: 0 !important;
-  margin: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100vw;
   height: 71px;
   background-color: white;
   box-shadow: 0px 10px 10px -10px rgb(221, 221, 221);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-#title {
-  font-size: 18px;
+header > span {
   margin-left: 20px;
+  font-size: 18px;
 }
 
 .title_left span {
@@ -29,9 +29,9 @@ header {
 .btn {
   width: 70px;
   height: 28px;
+  color: #007bff;
   background-color: white;
   border: 1px solid #007bff;
-  color: #007bff;
   border-radius: 3px;
   font-size: 15px;
 }
@@ -41,27 +41,27 @@ header {
 }
 
 main {
-  height: 668px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 668px;
 }
 
-#main_title {
+main > span {
   padding: 30px 10px;
+  color: #212529;
   font-size: 50px;
   font-weight: lighter;
-  color: #212529;
 }
 
-#main_text {
+main > span + span {
   width: 45vw;
-  line-height: 30px;
+  padding: 0px 0px 40px 0px;
+  text-align: center;
+  color: rgb(94, 94, 94);
   font-weight: lighter;
   font-size: 18px;
-  color: rgb(94, 94, 94);
-  text-align: center;
-  padding: 0px 0px 40px 0px;
+  line-height: 30px;
 }
 
 .card_warp {
@@ -69,51 +69,50 @@ main {
 }
 
 .main_card {
-  height: 344px;
   width: 288px;
+  height: 344px;
   margin-right: 32px;
   box-shadow: 2px 2px 2px 2px rgb(226, 224, 224);
 }
 
-.main_card-header {
-  font-size: 25px;
-  background-color: #f7f7f7;
+.main_card_header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 54px;
-  text-align: center;
   border: 1px solid rgb(221, 221, 221);
+  text-align: center;
+  font-size: 25px;
+  background-color: #f7f7f7;
 }
 
-.main_card-dollor {
+.main_card_dollor {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 272px;
   width: 288px;
+  height: 272px;
   font-size: 22px;
 }
 
-.main_card-dollor-mo {
+.dollor_mo {
+  padding: 20px 20px;
+  color: gray;
   font-size: 34px;
   font-weight: 500;
-  color: gray;
-  font-weight: 500;
-  padding: 20px 20px;
 }
 
-.main_card-dollor-mo > span {
+.dollor_mo > span {
   color: black;
   font-weight: 600;
 }
 
-.main_card-dollor-mo + span {
+.dollor_mo + span {
   width: 50%;
-  text-align: center;
-  line-height: 26px;
   margin-bottom: 20px;
   font-size: 17px;
+  text-align: center;
+  line-height: 26px;
 }
 
 .main_btn {
@@ -124,16 +123,16 @@ main {
 
 .main_card:nth-child(2) button,
 .main_card:nth-child(3) button {
-  background-color: #007bff;
   color: white;
+  background-color: #007bff;
 }
 
 footer {
-  padding-top: 49px;
+  display: flex;
   width: 930px;
   height: 231px;
+  padding-top: 49px;
   border-top: 1px solid rgb(207, 207, 207);
-  display: flex;
 }
 
 .footer_col {
@@ -149,9 +148,9 @@ footer {
 }
 
 .footer_col span {
+  color: gray;
   font-size: 15px;
   font-weight: 200;
-  color: gray;
   line-height: 23px;
 }
 

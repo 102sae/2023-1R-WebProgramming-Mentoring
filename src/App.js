@@ -4,9 +4,9 @@ import "./App.css";
 function Card(props) {
   return (
     <div className="main_card">
-      <div className="main_card-header">{props.title}</div>
-      <div className="main_card-dollor">
-        <span className="main_card-dollor-mo">
+      <div className="main_card_header">{props.title}</div>
+      <div className="main_card_dollor">
+        <span className="dollor_mo">
           <span>${props.money} </span>/ mo
         </span>
         <span>
@@ -22,7 +22,7 @@ function App() {
   return (
     <body>
       <header>
-        <span id="title">Company name</span>
+        <span>Company name</span>
 
         <div className="title_left">
           <span>Features</span>
@@ -34,8 +34,8 @@ function App() {
       </header>
 
       <main>
-        <span id="main_title">Pricing</span>
-        <span id="main_text">
+        <span>Pricing</span>
+        <span>
           Quickly build an effective pricing table for your potential customers
           with this Bootstrap example. It's built with default Bootstrap
           components and utilities with little customization.
