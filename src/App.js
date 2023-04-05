@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function Card(props) {
+  const [counter, setCounter] = useState(0);
+  const handleBtnClick = () => {
+    setCounter((prev) => prev + 1);
+    console.log(counter);
+    setCounter((prev) => prev + 1);
+    console.log(counter);
+    setCounter((prev) => prev + 1);
+    console.log(counter);
+    setCounter((prev) => prev + 1);
+    console.log(counter);
+  };
+
   return (
     <div className="main_card">
       <div className="main_card_header">{props.title}</div>
@@ -13,14 +25,18 @@ function Card(props) {
           {props.user} users included {props.memory} GB of storage Email support
           Help center access
         </span>
-        <button className="btn main_btn">{props.btn_txt}</button>
+        <button onClick={handleBtnClick} className="btn main_btn">
+          {props.btn_txt}
+        </button>
+        <h3>{counter}</h3>
       </div>
     </div>
   );
 }
+
 function App() {
   return (
-    <body>
+    <div>
       <header>
         <span>Company name</span>
 
@@ -102,7 +118,7 @@ function App() {
           <span>Teams</span>
         </div>
       </footer>
-    </body>
+    </div>
   );
 }
 
