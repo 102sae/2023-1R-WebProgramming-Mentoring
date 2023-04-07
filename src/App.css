@@ -129,6 +129,8 @@ main > span + span {
 
 footer {
   display: flex;
+  justify-content: center;
+  margin: 0 auto;
   width: 930px;
   height: 231px;
   padding-top: 49px;

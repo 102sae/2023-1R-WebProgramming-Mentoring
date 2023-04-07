@@ -2,39 +2,76 @@ import React, { useState } from "react";
 import "./App.css";
 
 function Card(props) {
-  const [counter, setCounter] = useState(0);
-  const handleBtnClick = () => {
-    setCounter((prev) => prev + 1);
-    console.log(counter);
-    setCounter((prev) => prev + 1);
-    console.log(counter);
-    setCounter((prev) => prev + 1);
-    console.log(counter);
-    setCounter((prev) => prev + 1);
-    console.log(counter);
-  };
-
   return (
     <div className="main_card">
       <div className="main_card_header">{props.title}</div>
       <div className="main_card_dollor">
         <span className="dollor_mo">
-          <span>${props.money} </span>/ mo
+          <span>${props.counter} </span>/ mo
         </span>
         <span>
           {props.user} users included {props.memory} GB of storage Email support
           Help center access
         </span>
-        <button onClick={handleBtnClick} className="btn main_btn">
+
+        <button className="btn main_btn" onClick={props.onClick}>
           {props.btn_txt}
         </button>
-        <h3>{counter}</h3>
       </div>
     </div>
   );
 }
 
 function App() {
+  const [counter, setCounter] = useState({
+    free: 0,
+    pro: 10,
+    enterprise: 20,
+  });
+
+  const onClick = (type) => () => {
+    if (type === "free") {
+      setCounter((prev) => ({ ...prev, free: prev.free + 1 }));
+      return; //뒤에있는거 안읽으니까 else랑 같음
+    }
+
+    if (type === "pro") {
+      setCounter((prev) => ({ ...prev, pro: prev.pro + 1 }));
+      return;
+    }
+
+    if (type === "enterprise") {
+      setCounter((prev) => ({ ...prev, enterprise: prev.enterprise + 1 }));
+      return;
+    }
+  };
+  const cardData = [
+    {
+      title: "Free",
+      counter: counter.free,
+      user: "10",
+      memory: "2",
+      btn_txt: "Sign up for free",
+      onClick: onClick("free"),
+    },
+    {
+      title: "Pro",
+      counter: counter.pro,
+      user: "20",
+      memory: "10",
+      btn_txt: "Get started",
+      onClick: onClick("pro"),
+    },
+    {
+      title: "Enterprise",
+      counter: counter.enterprise,
+      user: "30",
+      memory: "15",
+      btn_txt: "Contact us",
+      onClick: onClick("enterprise"),
+    },
+  ];
+
   return (
     <div>
       <header>
@@ -58,31 +95,12 @@ function App() {
         </span>
 
         <div className="card_warp">
-          <Card
-            title="Free"
-            money="0"
-            user="10"
-            memory="2"
-            btn_txt="Sign up for free"
-          ></Card>
-
-          <Card
-            title="Pro"
-            money="15"
-            user="20"
-            memory="10"
-            btn_txt="Get started"
-          ></Card>
-
-          <Card
-            title="Enterprise"
-            money="29"
-            user="30"
-            memory="15"
-            btn_txt="Contact us"
-          ></Card>
+          {cardData.map((cardItem, index) => (
+            <Card {...cardItem} key={`card_item_${index}`} />
+          ))}
         </div>
       </main>
+
       <footer>
         <div className="footer_col">
           <img
