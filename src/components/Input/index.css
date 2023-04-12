@@ -1,0 +1,32 @@
+/*INPUT CSS*/
+.input_root {
+  position: relative;
+}
+
+.input_warp {
+  padding: 6px 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.todo_input {
+  width: 235px;
+  height: 25px;
+  font-size: 18px;
+  border: 0px;
+  border-bottom: 1px solid #748fa6;
+}
+
+.todo_input:focus {
+  outline: none;
+}
+
+.button_add {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 0px;
+  color: white;
+  background-color: #748fa6;
+}
