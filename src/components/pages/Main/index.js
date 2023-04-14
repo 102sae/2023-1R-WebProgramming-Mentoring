@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./index.css";
-import Input from "../../components/Input/";
-import TodoItem from "../../components/Todoitem/";
+import Input from "../../../components/Input/";
+import TodoItem from "../../../components/TodoItem/";
+
+let count = 0;
 
 const MainPage = () => {
   const [todoListData, setTodoListData] = useState([]);
@@ -21,14 +23,17 @@ const MainPage = () => {
   };
 
   /*todolist 생성 */
-  const onCreateInput = () => {
-    setTodoListData([...todoListData, { title: inputValue }]);
+  const onAddTodo = () => {
+    if (inputValue) {
+      setTodoListData([...todoListData, { id: count, title: inputValue }]);
+      setInputValue("");
+      count++;
+    }
   };
 
   /*todolist 삭제 */
   const onClickDelete = (id) => () => {
     setTodoListData((prev) => prev.filter((value, index) => id !== index));
-    return;
   };
 
   return (
@@ -36,7 +41,7 @@ const MainPage = () => {
       <span className="todo_header">TodoList</span>
       <div className="todo_card">
         <Input
-          onCreateInput={onCreateInput}
+          onAddTodo={onAddTodo}
           onChangeInput={onChangeInput}
           inputValue={inputValue}
         />
@@ -46,7 +51,7 @@ const MainPage = () => {
             isEdit={isEdit}
             onToggleEdit={onToggleEdit}
             onClickDelete={onClickDelete(index)}
-            key={`todo_item_${index}`}
+            key={`todo_item_${todoItemData.id}`}
           />
         ))}
       </div>

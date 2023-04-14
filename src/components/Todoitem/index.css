@@ -3,7 +3,7 @@
   text-decoration: line-through;
 }
 
-.todo_warp {
+.todo_wrap {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -15,4 +15,8 @@
   font-size: 18px;
   border: 0px;
   border-bottom: 1px solid #748fa6;
+}
+
+.icon_button {
+  cursor: pointer;
 }

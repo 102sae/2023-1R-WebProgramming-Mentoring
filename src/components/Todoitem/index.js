@@ -12,13 +12,13 @@ const TodoItem = ({ title, onClickDelete, isEdit, onToggleEdit }) => {
   };
 
   /*fontAwesome icon */
-  const iconChecked = <FontAwesomeIcon icon={faCheck} />;
-  const iconPencil = <FontAwesomeIcon icon={faPencil} />;
-  const iconXmark = <FontAwesomeIcon icon={faX} />;
+  const renderIconChecked = <FontAwesomeIcon icon={faCheck} />;
+  const renderIconPencil = <FontAwesomeIcon icon={faPencil} />;
+  const renderIconXmark = <FontAwesomeIcon icon={faX} />;
 
   return (
     <div className="todo_root">
-      <div className="todo_warp">
+      <div className="todo_wrap">
         <input
           className="todo_checkbox"
           type="checkbox"
@@ -32,12 +32,12 @@ const TodoItem = ({ title, onClickDelete, isEdit, onToggleEdit }) => {
           defaultValue={title}
         />
 
-        {isEdit ? (
-          <span onClick={onToggleEdit}> {iconChecked}</span>
-        ) : (
-          <span onClick={onToggleEdit}> {iconPencil}</span>
-        )}
-        <span onClick={onClickDelete}> {iconXmark}</span>
+        <span className="icon_button" onClick={onToggleEdit}>
+          {isEdit ? renderIconChecked : renderIconPencil}
+        </span>
+        <span className="icon_button" onClick={onClickDelete}>
+          {renderIconXmark}
+        </span>
       </div>
     </div>
   );

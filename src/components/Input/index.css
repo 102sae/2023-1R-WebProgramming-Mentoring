@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.input_warp {
+.input_wrap {
   padding: 6px 6px;
   display: flex;
   justify-content: space-around;
@@ -29,4 +29,5 @@
   border: 0px;
   color: white;
   background-color: #748fa6;
+  cursor: pointer;
 }
