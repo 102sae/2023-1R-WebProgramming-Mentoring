@@ -25,4 +25,9 @@
   height: 400px;
   background-color: white;
   box-shadow: 50px -13px #a3c4bc;
+  overflow: auto;
+}
+
+.todo_card::-webkit-scrollbar {
+  width: 4px;
 }

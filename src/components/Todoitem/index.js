@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faX, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const TodoItem = ({ title, onClickDelete, isEdit, onToggleEdit }) => {
-  const [checked, setChecked] = useState(false);
-
-  /*체크 박스를 클릭하면 checked 상태 변화*/
-  const onClickCheckbox = () => {
-    setChecked((prev) => !prev);
-  };
-
+const TodoItem = ({
+  title,
+  isChecked,
+  isEdit,
+  todoId,
+  onClickDelete,
+  onClickCheckbox,
+  onChangeTodo,
+  onChangeUpdateInput,
+  onToggleEdit,
+}) => {
   /*fontAwesome icon */
   const renderIconChecked = <FontAwesomeIcon icon={faCheck} />;
   const renderIconPencil = <FontAwesomeIcon icon={faPencil} />;
   const renderIconXmark = <FontAwesomeIcon icon={faX} />;
+
+  const moveDetail = useNavigate();
+  /* detail 페이지로 이동 */
+  const onClickDetail = () => {
+    moveDetail("/details", {
+      /*detail을 볼 id와 toggle을 넘겨줌*/
+      state: {
+        id: todoId,
+        isChecked: isChecked,
+      },
+    });
+  };
 
   return (
     <div className="todo_root">
@@ -22,14 +37,21 @@ const TodoItem = ({ title, onClickDelete, isEdit, onToggleEdit }) => {
         <input
           className="todo_checkbox"
           type="checkbox"
-          checked={checked}
+          checked={isChecked}
           onChange={onClickCheckbox}
         />
 
         <input
-          className={checked ? "toggle todo_input" : "todo_input"}
+          className={isChecked ? "toggle todo_input" : "todo_input"}
           readOnly={isEdit ? false : true}
           defaultValue={title}
+          onClick={isEdit ? function () {} : onClickDetail}
+          onChange={onChangeUpdateInput}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onChangeTodo();
+            }
+          }}
         />
 
         <span className="icon_button" onClick={onToggleEdit}>

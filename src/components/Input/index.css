@@ -16,6 +16,7 @@
   font-size: 18px;
   border: 0px;
   border-bottom: 1px solid #748fa6;
+  margin-bottom: 5px;
 }
 
 .todo_input:focus {
