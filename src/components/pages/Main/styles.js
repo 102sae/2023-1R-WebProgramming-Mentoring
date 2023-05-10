@@ -1,7 +1,6 @@
-/*Main CSS*/
-@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&family=Rubik:wght@700&display=swap");
+import styled from "styled-components";
 
-.body {
+export const Root = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -9,25 +8,24 @@
   justify-content: center;
   align-items: center;
   background-color: #748fa6;
-}
+`;
 
-.body > .todo_header {
+export const TodoHeader = styled.div`
   margin-bottom: 20px;
   margin-left: 10px;
   color: white;
   font-size: 36px;
   font-family: "Rubik", sans-serif;
   text-shadow: 3px 2px 2px #a3c4bc;
-}
+`;
 
-.todo_card {
+export const TodoCard = styled.div`
   width: 300px;
   height: 400px;
   background-color: white;
   box-shadow: 50px -13px #a3c4bc;
   overflow: auto;
-}
-
-.todo_card::-webkit-scrollbar {
-  width: 4px;
-}
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+`;

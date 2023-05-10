@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Input from "../../Input";
-import { DefaultContext } from "react-icons";
 
 /*const styleFlexColumnCenter = `
     display: flex;
@@ -12,34 +10,31 @@ export const Root = styled.div`
   ${styleFlexColumnCenter}
 `;
 */
-export const InputBox = styled.input`
+
+export const Input = styled.input`
   width: 230px;
   height: 25px;
   font-size: 18px;
   border: 0px;
   border-bottom: 1px solid #748fa6;
-  margin: 20px 0px 0px 2px;
+  text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
   &:focus {
     outline: none;
   }
 `;
 
-export const TodoTitle = styled.span`
-  margin-bottom: 20px;
-  margin-left: 10px;
-  color: white;
-  font-size: 36px;
-  font-family: "Rubik", sans-serif;
-  text-shadow: 3px 2px 2px #748fa6;
+export const TodoWrap = styled.div`
+  width: 300px;
+  margin: 0 auto;
 `;
 
 export const TodoCard = styled.div`
-  width: 290px;
-  height: 400px;
-  padding: 0px 5px;
+  width: 95vw;
+  height: 95vw;
   background-color: white;
-  box-shadow: 50px -13px #748fa6;
-  overflow: auto;
+  border: 3px solid #748fa6;
+  margin: 20px 0px;
+  padding: 15px 5px;
 `;
 
 export const Root = styled.div`
@@ -47,7 +42,6 @@ export const Root = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #a3c4bc;
+  background-color: white;
 `;

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import "./index.css";
+import { Root, TodoHeader, TodoCard } from "./styles";
 import Input from "../../../components/Input/";
 import TodoItem from "../../../components/TodoItem/";
 
 let count = 0;
 if (localStorage.getItem("count") !== null) {
   count = parseInt(localStorage.getItem("count"));
-} else {
-  localStorage.setItem("count", count);
 }
-
 const MainPage = () => {
   const [todoListData, setTodoListData] = useState([]);
 
@@ -25,8 +22,8 @@ const MainPage = () => {
 
   /*detail page로 갔다와도 todoListData 유지 */
   useEffect(() => {
-    setTodoListData(localTodoListData);
-  }, []);
+    setTodoListData(localTodoListData ?? []);
+  }, [localTodoListData]);
 
   /*체크 박스를 클릭하면 isChecked 상태 변화*/
   const onClickCheckbox = (id) => () => {
@@ -53,30 +50,16 @@ const MainPage = () => {
   const onAddTodo = () => {
     if (inputValue) {
       /*local storage에 값이 있으면 */
-      if (todoListData !== null) {
-        setTodoListData((prevState) => {
-          let newTodoListData = prevState.concat([
-            { id: count, title: inputValue, isChecked: false },
-          ]);
-          setInputValue("");
-          /*local storage에 저장*/
-          localStorage.removeItem("todoListData");
-          localStorage.setItem("todoListData", JSON.stringify(newTodoListData));
-          return newTodoListData;
-        });
-      } else {
-        /*local storage에 값이 없으면 */
-        setTodoListData(() => {
-          let newTodoListData = [].concat([
-            { id: count, title: inputValue, isChecked: false },
-          ]);
-          setInputValue("");
-          /*local storage에 저장*/
-          localStorage.removeItem("todoListData");
-          localStorage.setItem("todoListData", JSON.stringify(newTodoListData));
-          return newTodoListData;
-        });
-      }
+      setTodoListData((prevState) => {
+        let newTodoListData = prevState.concat([
+          { id: count, title: inputValue, isChecked: false },
+        ]);
+        setInputValue("");
+        /*local storage에 저장*/
+        localStorage.removeItem("todoListData");
+        localStorage.setItem("todoListData", JSON.stringify(newTodoListData));
+        return newTodoListData;
+      });
       count += 1;
       /*local storage의 count 값 수정 */
       localStorage.removeItem("count");
@@ -117,9 +100,9 @@ const MainPage = () => {
   };
 
   return (
-    <div className="body">
-      <span className="todo_header">TodoList</span>
-      <div className="todo_card">
+    <Root>
+      <TodoHeader>TodoList</TodoHeader>
+      <TodoCard>
         <Input
           onAddTodo={onAddTodo}
           onChangeInput={onChangeInput}
@@ -127,23 +110,22 @@ const MainPage = () => {
         />
 
         {/*local storage에 todo가 없으면 mapping 하지 않음 */}
-        {localTodoListData !== null
-          ? localTodoListData.map((todoItemData, index) => (
-              <TodoItem
-                {...todoItemData}
-                isEdit={isEdit}
-                todoId={index}
-                onClickDelete={onClickDelete(index)}
-                onClickCheckbox={onClickCheckbox(index)}
-                onChangeTodo={onChangeTodo(index)}
-                onChangeUpdateInput={onChangeUpdateInput}
-                onToggleEdit={onToggleEdit}
-                key={`todo_item_${todoItemData.id}`}
-              />
-            ))
-          : null}
-      </div>
-    </div>
+        {localTodoListData &&
+          localTodoListData.map((todoItemData, index) => (
+            <TodoItem
+              {...todoItemData}
+              isEdit={isEdit}
+              todoId={index}
+              onClickDelete={onClickDelete(index)}
+              onClickCheckbox={onClickCheckbox(index)}
+              onChangeTodo={onChangeTodo(index)}
+              onChangeUpdateInput={onChangeUpdateInput}
+              onToggleEdit={onToggleEdit}
+              key={`todo_item_${todoItemData.id}`}
+            />
+          ))}
+      </TodoCard>
+    </Root>
   );
 };
 
