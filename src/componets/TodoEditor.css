@@ -1,0 +1,31 @@
+.TodoEditor h4 {
+  margin-top: 0;
+}
+
+.TodoEditor .editorWrapper {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.editorWrapper input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editorWrapper input:focus {
+  outline: none;
+  border: 1px solid #1f93ff;
+}
+
+.editorWrapper button {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #1f93ff;
+  color: #fff;
+  cursor: pointer;
+  width: 80px;
+}
