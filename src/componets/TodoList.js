@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
 const TodoList = ({ todos, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
+
+  const analyzeTodo = useMemo(() => {
+    console.log("함수 호출");
+    const totalCount = todos.length;
+    const doneCount = todos.filter((todo) => todo.isDone).length;
+    const undoneCount = totalCount - doneCount;
+    return { totalCount, doneCount, undoneCount };
+  }, [todos]);
 
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -16,6 +24,8 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
           todo.content.toLowerCase().includes(search.toLowerCase())
         );
   };
+
+  const { totalCount, doneCount, undoneCount } = analyzeTodo;
 
   return (
     <div className="TodoList">
@@ -34,6 +44,11 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
             {...todo}
           />
         ))}
+        <div>
+          <div className="analyze">
+            총: {totalCount}개 / 완료: {doneCount}개 / 미완료: {undoneCount}개
+          </div>
+        </div>
       </div>
     </div>
   );

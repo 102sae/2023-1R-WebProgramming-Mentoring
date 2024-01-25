@@ -1,5 +1,5 @@
 import "./App.css";
-import { useReducer, useRef, useState } from "react";
+import { useReducer, useRef } from "react";
 import Header from "./componets/Header";
 import TodoEditor from "./componets/TodoEditor";
 import TodoList from "./componets/TodoList";
