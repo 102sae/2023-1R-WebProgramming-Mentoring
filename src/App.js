@@ -1,5 +1,5 @@
 import "./App.css";
-import { useCallback, useReducer, useRef } from "react";
+import React, { useCallback, useReducer, useRef } from "react";
 import Header from "./componets/Header";
 import TodoEditor from "./componets/TodoEditor";
 import TodoList from "./componets/TodoList";
@@ -18,6 +18,8 @@ const mokTodos = [
     createDate: new Date().getTime(),
   },
 ];
+
+export const TodoContext = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -62,8 +64,10 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList todos={todo} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>
+        <TodoEditor />
+        <TodoList />
+      </TodoContext.Provider>
     </div>
   );
 };
